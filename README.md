@@ -39,7 +39,7 @@ SimpleFETCH (sfetch) is a lightweight system information tool inspired by Neofet
 ## Installation
 Download the sfetch script and place it in the /usr/bin/ directory (requires sudo access):
 ```bash
-sudo wget -O /usr/bin/sfetch https://github.com/xealea/sfetch/raw/main/sfetch
+sudo wget -O /usr/bin/sfetch https://github.com/xealea/sfetch/raw/master/sfetch
 ```
 
 ## Usage
