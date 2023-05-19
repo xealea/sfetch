@@ -1,0 +1,68 @@
+#!/bin/bash
+# Tiny colored fetch script
+# Requires Typicons Font to display the icons
+# Copyright (c) 2023 Lea <xealea@xeadev.my.id>
+# based script from elenapan @ github
+
+# Define colors and styles
+f=3 b=4
+for j in f b; do
+    for i in {0..7}; do
+        printf -v $j$i %b "\e[${!j}${i}m"
+    done
+done
+d=$'\e[1m'
+t=$'\e[0m'
+v=$'\e[7m'
+
+# Get system info
+sep=
+s=$d$f0$sep$t
+
+# Define icons based on distribution
+if [ -f "/etc/arch-release" ]; then
+    distro_icon=""
+elif [ -f "/etc/debian_version" ]; then
+    distro_icon=""
+elif [ -f "/etc/gentoo-release" ]; then
+    distro_icon=""
+elif [ -f "/etc/zorin-release" ]; then
+    distro_icon=""
+elif [ -f "/etc/deepin-version" ]; then
+    distro_icon=""
+elif [ -f "/etc/elementary_version" ]; then
+    distro_icon=""
+elif [ -f "/etc/devuan_version" ]; then
+    distro_icon=""
+elif [ -f "/etc/alpine-release" ]; then
+    distro_icon=""
+elif [ -f "/etc/almalinux-release" ]; then
+    distro_icon=""
+elif [ -f "/etc/endeavouros-release" ]; then
+    distro_icon=""
+else
+    distro_icon=""
+fi
+
+h=$distro_icon
+wmname="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
+
+k=
+kernel="$(uname -r | cut -d '-' -f1)"
+
+r=
+resolution="$(xwininfo -root | grep geometry | awk '{print $2}' | cut -d + -f1)"
+
+u=
+username=$(whoami)
+
+# Print system info
+cat <<EOF
+
+          $d$f1$h  $t$wmname
+ /\_/\    $d$f5$k  $t$kernel
+( o.o )   $d$f4$u  $t$username
+  >$f1^$t<     $d$f2$r  $t$resolution
+          ${d}${f5}${t} ${d}${f4}${t} ${d}${f3}${t} ${d}${f2}${t} ${d}${f1}${t} ${d}${f0}${t}
+EOF
+
