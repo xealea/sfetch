@@ -43,7 +43,7 @@ sudo wget -O /usr/bin/sfetch https://github.com/xealea/sfetch/raw/master/sfetch
 ```
 Make the scripts executable
 ```bash
-chmod +x /usr/bin/sfetch
+sudo chmod +x /usr/bin/sfetch
 ```
 
 ## Usage
