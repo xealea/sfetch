@@ -41,6 +41,10 @@ Download the sfetch script and place it in the /usr/bin/ directory (requires sud
 ```bash
 sudo wget -O /usr/bin/sfetch https://github.com/xealea/sfetch/raw/master/sfetch
 ```
+Make the scripts executable
+```bash
+chmod +x /usr/bin/sfetch
+```
 
 ## Usage
 To use SimpleFETCH, open a terminal and run the following command:
